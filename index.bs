@@ -884,7 +884,7 @@ spec:css-syntax-3;
         cause modal dialogs to be displayed except for {{CredentialMediationRequirement/conditional}}.
 
     :   <dfn>immediate</dfn>
-    ::  On an invocation to {{CredentialsContainer/get()}, the user agent will either show a modal credential selection
+    ::  On an invocation to {{CredentialsContainer/get()}}, the user agent will either show a modal credential selection
         dialog to the user, or the operation will immediately complete without providing credentials.
 
         This provides the ability for simplified sign-in UI to be shown to the user, or else the website can take an
