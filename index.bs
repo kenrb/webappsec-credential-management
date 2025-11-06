@@ -865,7 +865,8 @@ spec:css-syntax-3;
   Note: This allows callers to distinguish between different available forms of [=user mediation=], when it occurs. Whether
   or not it occurs depends on the value of {{CredentialMediationRequirement}} for the request. Not all values of
   {{CredentialUiModeRequirement}} make sense in combination with all values of {{CredentialMediationRequirement}}, and the
-  interaction depends on the [[DiscoverFromExternalSource]] method implementation for credential types that support it.
+  interaction depends on the `[[DiscoverFromExternalSource]](origin, options, sameOriginWithAncestors)` methods for credential
+  types that support it.
 
   <pre class="idl">
     enum CredentialUiModeRequirement {
