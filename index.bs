@@ -884,7 +884,8 @@ spec:css-syntax-3;
 
   <pre class="idl">
     enum CredentialUiMode {
-      "immediate"
+      "immediate",
+      "passive"
     };
   </pre>
   <div dfn-for="CredentialUiMode" dfn-type="enum-value">
@@ -903,6 +904,15 @@ spec:css-syntax-3;
         In the future, if this mediation mode is expanded to include other credential types, a more general
         approach to feature detection will be needed that can indicate which credential types are
         supported under a given combination of {{CredentialMediationRequirement}} and {{CredentialUiMode}} values.
+
+    :   <dfn>passive</dfn>
+    ::  On an invocation to {{CredentialsContainer/get()}}, the user agent will show a credential selection
+        dialog to the user. The dialog SHOULD be suitable for signing in from pages that are not primarily designed
+        to help the user sign in.
+
+        When paired with {{CredentialMediationRequirement/conditional}}, it signals the user agent that it should display
+        an alternative user interface to autofill. It can have other meanings depending on the
+        `[[DiscoverFromExternalSource]](origin, options, sameOriginWithAncestors)` specification.
   </div>
 
   #### Examples #### {#mediation-examples}
@@ -1082,6 +1092,12 @@ spec:css-syntax-3;
             not support {{CredentialUiMode/immediate}}
             [=user mediation=], return [=a promise rejected with=]
             a {{TypeError}}.
+
+        1.  If |options|.{{CredentialRequestOptions/uiMode}} is
+            {{CredentialUiMode/passive}} and |interface| does
+            not support {{CredentialUiMode/passive}}
+            [=user mediation=], return [=a promise rejected with=]
+            a "{{TypeError}}" {{DOMException}}.
 
         1. If |settings|' [=active credential types=] [=set/contains=] |interface|'s
             {{Credential/[[type]]}}, return [=a promise rejected with=] a "{{NotAllowedError}}"
